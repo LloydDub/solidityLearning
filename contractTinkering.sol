@@ -21,8 +21,13 @@ contract ZombieFactory {
       //You can declare an array as public, and Solidity will automatically create a getter method for it. The syntax looks like:
     Zombie[] public zombies;
 
-    function createZombie (string memory _name, uint _dna) public {
-        // start here
+    function createZombie (string memory _name, uint _dna) private {
+        zombies.push(Zombie(_name, _dna));
+    }
+
+        function _generateRandomDna(string memory _str) private view returns (uint) {
+        
+
     }
 
 
@@ -34,3 +39,5 @@ contract ZombieFactory {
 // function. This allows your function to modify the value without worrying that the value of the initial parameter gets changed.
 // By reference, which means that your function is called with a... reference to the original variable. Thus, if your
 //  function changes the value of the variable it receives, the value of the original variable gets changed.
+
+// it's good practice to mark your functions as private by default, and then only make public the functions you want to expose to the world. t's convention to start private function names with an underscore (_).
